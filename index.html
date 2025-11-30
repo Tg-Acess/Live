@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refine Premium Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        /* Announcement Styles */
+        .announcement-banner {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .announcement-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .announcement-text {
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        .country-list {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .country-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        /* Login Form Styles */
+        .login-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            line-height: 1.3;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #34495e;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid #e0e4e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+        }
+
+        .verification-section {
+            margin: 1.5rem 0;
+            background: #f8f9fb;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .math-problem {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .refresh-link {
+            color: #3498db;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .support-links {
+            margin: 1.2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .support-links a {
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.3rem;
+        }
+
+        .whatsapp-contact {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0.9rem 1.5rem;
+            border-radius: 25px;
+            background-color: #25D366;
+            color: white !important;
+            text-decoration: none;
+            width: 100%;
+            transition: filter 0.2s;
+        }
+
+        .security-notice {
+            color: #95a5a6;
+            font-size: 0.8rem;
+            margin-top: 1.5rem;
+            line-height: 1.4;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 480px) {
+            body { padding: 0.5rem; min-height: 100dvh; }
+            .login-container { padding: 1.2rem; max-width: 100%; }
+            h1 { font-size: 1.3rem; }
+            input { padding: 0.8rem; }
+            .announcement-banner { margin-bottom: 1rem; padding: 0.8rem; }
+            .country-item { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+            .announcement-text { font-size: 0.9rem; }
+        }
+
+        @media (max-width: 374px) {
+            .login-container { padding: 1rem; }
+            h1 { font-size: 1.2rem; }
+            input { padding: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Announcement Banner -->
+        <div class="announcement-banner" style="display: none;">
+            <button class="close-btn" onclick="closeAnnouncement()">×</button>
+            <div class="announcement-content">
+                <div class="announcement-text">
+                    🎉 New Service Areas Available!
+                </div>
+                <div class="country-list">
+                    <div class="country-item">
+                        <span>🇰🇷</span> Korea
+                    </div>
+                    <div class="country-item">
+                        <span>🇯🇵</span> Japan
+                    </div>
+                    <div class="country-item">
+                        <span>🇸🇪</span> Sweden
+                    </div>
+                    <div class="country-item">
+                        <span>🇬🇧</span> UK
+                    </div>
+                </div>
+                <div class="announcement-text">
+                    Full Premium Access Now Active!
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <h1>Refine Premium Network</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" required autocomplete="username" inputmode="email">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" required autocomplete="current-password">
+            </div>
+
+            <div class="verification-section">
+                <div class="form-group">
+                    <label>Security Verification</label>
+                    <div class="math-problem">
+                        <span>What is</span>
+                        <span id="num1">0</span>
+                        <span>+</span>
+                        <span id="num2">0</span>
+                        <span>= ?</span>
+                    </div>
+                    <input type="number" placeholder="Enter answer" required id="mathAnswer" inputmode="numeric">
+                    <input type="hidden" id="correctAnswer" name="correctAnswer">
+                    <div class="refresh-link" onclick="generateMathProblem()">⟳ Generate New Problem</div>
+                </div>
+            </div>
+
+            <button type="submit">ACCESS SYSTEM</button>
+
+            <div class="support-links">
+                <a href="#" class="touch-target">Forgot Password?</a>
+                <a href="#" class="touch-target">Request Access</a>
+            </div>
+
+            <div class="whatsapp-contact">
+                <a href="https://wa.me/18193054550" class="whatsapp-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Contact Support
+                </a>
+            </div>
+
+            <p class="security-notice">
+                For security reasons, please log out after each session
+            </p>
+        </form>
+    </div>
+
+    <script>
+        // Math Problem Generator
+        function generateMathProblem() {
+            const num1 = Math.floor(Math.random() * 15) + 1;
+            const num2 = Math.floor(Math.random() * 15) + 1;
+            document.getElementById('num1').textContent = num1;
+            document.getElementById('num2').textContent = num2;
+            document.getElementById('correctAnswer').value = num1 + num2;
+            document.getElementById('mathAnswer').value = '';
+        }
+
+        // Form Validation
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const userAnswer = parseInt(document.getElementById('mathAnswer').value);
+            const correctAnswer = parseInt(document.getElementById('correctAnswer').value);
+            if (userAnswer !== correctAnswer) {
+                e.preventDefault();
+                alert('Security verification failed. Please check your answer.');
+                generateMathProblem();
+            }
+        });
+
+        // Announcement Functions
+        function closeAnnouncement() {
+            document.querySelector('.announcement-banner').style.display = 'none';
+            localStorage.setItem('announcementClosed', 'true');
+        }
+
+        // Show announcement if not closed
+        if (!localStorage.getItem('announcementClosed')) {
+            document.querySelector('.announcement-banner').style.display = 'block';
+        }
+
+        // Touch Interactions
+        document.querySelectorAll('.touch-target').forEach(link => {
+            link.addEventListener('touchstart', () => link.style.opacity = '0.7');
+            link.addEventListener('touchend', () => link.style.opacity = '1');
+        });
+
+        // Initial Setup
+        generateMathProblem();
+    </script>
+</body>
+</html>
